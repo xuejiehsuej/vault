@@ -1,0 +1,11 @@
+name: 删除一件收藏
+description: 根据条目 ID 从 Vault 删除
+title: "[REMOVE] "
+body:
+  - type: input
+    id: item-id
+    attributes:
+      label: 条目 ID
+      description: 卡片底部可看到 ID；从网页点击删除时会自动带上。
+    validations:
+      required: true

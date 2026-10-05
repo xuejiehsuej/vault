@@ -1,0 +1,51 @@
+name: 添加一件收藏
+description: 壁纸、COS、视频、笔记、网站或其他值得留住的东西
+title: "[ADD] "
+body:
+  - type: input
+    id: name
+    attributes:
+      label: 名称
+      placeholder: 例如：某张壁纸 / 某期视频 / 某个网站
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: 分类
+      description: auto 识别 B站、小红书及图片直链，其余归入 website。可手动指定分类覆盖识别结果，COS 建议手动选择 cos。
+      options: [auto, wallpaper, cos, bilibili, xiaohongshu, website, other]
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: 链接
+      placeholder: https://...
+    validations:
+      required: true
+  - type: input
+    id: image
+    attributes:
+      label: 图片 URL
+      description: 可留空。建议使用图床，只在仓库保存 URL。
+      placeholder: https://...
+  - type: textarea
+    id: note
+    attributes:
+      label: 备注
+      placeholder: 为什么收藏、哪里值得以后再看……
+  - type: input
+    id: tags
+    attributes:
+      label: 标签
+      description: 用中文或英文逗号分隔
+      placeholder: 星穹铁道, COS, 摄影
+  - type: dropdown
+    id: layout
+    attributes:
+      label: 展示尺寸
+      description: Auto 会根据分类自动选择。后续可随时编辑 JSON 调整。
+      options: [auto, normal, wide, tall, large]
+    validations:
+      required: true

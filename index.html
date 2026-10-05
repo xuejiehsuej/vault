@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101e1c"><meta name="description" content="Sovue 山海藏馆，收藏图像、灵感与世界的片刻。"><title>山海藏馆 · SOVUE VAULT</title><link rel="stylesheet" href="./assets/style.css"><link rel="stylesheet" href="./assets/pages.css"><link rel="stylesheet" href="./assets/immersion.css"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23121f1d'/%3E%3Cpath d='M5 29L14 10L20 23L27 7L36 29Z' fill='none' stroke='%23d4b77c' stroke-width='2'/%3E%3C/svg%3E"></head>
+<body class="home-page">
+<a class="skip" href="./collection.html">直接进入馆藏</a>
+<div class="realm" aria-hidden="true"><canvas id="realmCanvas"></canvas><div class="realm-shade"></div></div>
+<header id="siteHeader" class="header"></header>
+<main>
+<section class="entrance" aria-labelledby="heroTitle">
+<div class="entrance-kicker"><span class="tiny-diamond"></span> THE ARCHIVE OF WONDERS <span>序 · 万象</span></div>
+<div class="entrance-copy"><p class="eyebrow">山海有界 · 所藏无垠</p><h1 id="heroTitle">藏万象<br>于山海之间<span class="gold-stop">。</span></h1><p class="entrance-desc">拾取散落于世界的灵感，<br>让每一份热爱，在此有迹可循。</p>
+<form class="entrance-search" action="./collection.html" method="get"><label class="sr-only" for="searchInput">搜索馆藏</label><input id="searchInput" type="search" name="q" placeholder="寻一件藏品，或一种灵感…"><button type="submit" aria-label="搜索馆藏">↗</button></form>
+<div class="entrance-links"><a class="enter" id="continueLink" href="./collection.html">循光入藏 <span>↗</span></a><a class="all-link" href="./collection.html?view=all">浏览全部馆藏</a></div><p id="resumeNote" class="resume-note" hidden></p></div>
+<div class="entrance-side"><span>天光为序</span><span>山海为藏</span><i></i><small>ARCHIVE / 001</small></div>
+<div class="entrance-bottom"><span><b class="live-dot"></b><span id="realmStatus">金流不息 · 静观万象</span></span><a href="./collection.html?view=favorites">我的珍藏 ↗</a><span id="entranceCount">万象，静候归藏。</span></div>
+</section>
+<section class="home-portals" aria-label="馆藏分类"><div><p class="eyebrow">FOLLOW YOUR CURIOSITY</p><h2>每份热爱，自有归处。</h2></div><div class="portal-links"><a href="./collection.html?category=wallpaper"><span>01</span>壁纸影像 ↗</a><a href="./collection.html?category=cos"><span>02</span>角色映像 ↗</a><a href="./collection.html?category=bilibili"><span>03</span>视频映记 ↗</a><a href="./collection.html?category=website"><span>04</span>网络秘径 ↗</a></div></section>
+</main><footer id="siteFooter"></footer><div id="sharedDialogs"></div><div id="toast" class="toast" role="status"></div>
+<script src="./config.js"></script><script type="module" src="./assets/home.js"></script></body></html>

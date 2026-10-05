@@ -1,0 +1,11 @@
+dist/
+node_modules/
+__pycache__/
+*.pyc
+.env*
+*.private.json
+docs/qa/
+*.log
+task_plan.md
+findings.md
+progress.md

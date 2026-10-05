@@ -1,0 +1,10 @@
+window.VAULT_CONFIG={
+  repo:'xuejiehsuej/vault',
+  sites:{
+    home:'https://xuejiehsuej.github.io/',
+    blog:'https://xuejiehsuej.github.io/blog/',
+    vault:'https://xuejiehsuej.github.io/vault/',
+    playground:'https://xuejiehsuej.github.io/playground/',
+    github:'https://github.com/xuejiehsuej'
+  }
+};

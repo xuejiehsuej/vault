@@ -1,0 +1,6 @@
+const defaults={category:'all',query:'',sort:'new',favoritesOnly:false,scroll:0};
+export function cleanState(raw){const x=raw&&typeof raw==='object'?raw:{};return {category:typeof x.category==='string'&&x.category?x.category.slice(0,100):'all',query:typeof x.query==='string'?x.query.slice(0,500):'',sort:['new','old','title'].includes(x.sort)?x.sort:'new',favoritesOnly:x.favoritesOnly===true,scroll:Number.isFinite(x.scroll)?Math.max(0,Math.min(x.scroll,1e7)):0};}
+export function resolveState(saved,search){const p=new URLSearchParams(search);if(!['q','category','view'].some(k=>p.has(k)))return cleanState(saved);const next=cleanState({...defaults,query:p.get('q')||'',category:p.get('category')||'all',sort:p.get('sort')||'new',favoritesOnly:p.get('view')==='favorites'});const prior=cleanState(saved);if(['category','query','sort','favoritesOnly'].every(k=>next[k]===prior[k]))next.scroll=prior.scroll;return next;}
+export function readStorage(key,fallback){try{return JSON.parse(localStorage.getItem(key))??fallback;}catch{return fallback;}}
+export function writeStorage(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true;}catch{return false;}}
+export const stateKey='vault-browse-state-v2';

@@ -1,0 +1,1 @@
+{"name":"sovue-vault","version":"0.2.0","private":true,"type":"module","scripts":{"start":"node server.js","test":"node --test tests/*.test.js","test:issues":"python -m unittest discover -s tests -p test_*.py","build":"python scripts/build_site.py"}}

@@ -1,0 +1,80 @@
+name: Deploy Vault Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  workflow_run:
+    workflows: [Process Vault Issue]
+    types: [completed]
+
+permissions:
+  contents: read
+  issues: write
+  pages: write
+  id-token: write
+
+# Only deployment is coalesced. Every Issue ingestion has already committed.
+# Every surviving deployment checks out latest main and acknowledges all included Issues.
+concurrency:
+  group: vault-pages
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify collection and frontend
+        run: |
+          npm test
+          python -m unittest discover -s tests -p 'test_*.py'
+      - name: Build static site
+        run: python scripts/build_site.py
+      - name: Record deployed revision
+        id: revision
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Acknowledge all published collection changes
+        if: success()
+        uses: actions/github-script@v7
+        env:
+          DEPLOYED_SHA: ${{ steps.revision.outputs.sha }}
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        with:
+          script: |
+            const {owner,repo} = context.repo;
+            const issues = await github.paginate(github.rest.issues.listForRepo,{owner,repo,state:'open',labels:'vault-pending'});
+            for(const issue of issues){
+              if(issue.user?.login !== owner || issue.pull_request) continue;
+              const comments = await github.paginate(github.rest.issues.listComments,{owner,repo,issue_number:issue.number});
+              const comment = comments.find(x=>x.user?.login==='github-actions[bot]' && x.body?.includes('<!-- vault-automation -->'));
+              const sha = comment?.body?.match(/<!-- vault-commit:([a-f0-9]{40}) -->/)?.[1];
+              if(!sha) continue;
+              const comparison = await github.rest.repos.compareCommits({owner,repo,base:sha,head:process.env.DEPLOYED_SHA});
+              if(!['ahead','identical'].includes(comparison.data.status)) continue;
+              const current = await github.rest.issues.getComment({owner,repo,comment_id:comment.id});
+              if(current.data.body !== comment.body) continue;
+              const body = comment.body.replace('数据已保存，等待 Pages 发布。部署成功后会自动更新此消息并关闭 Issue。',`已部署至 ${process.env.PAGE_URL} 。`);
+              await github.rest.issues.updateComment({owner,repo,comment_id:comment.id,body});
+              await github.rest.issues.removeLabel({owner,repo,issue_number:issue.number,name:'vault-pending'});
+              await github.rest.issues.update({owner,repo,issue_number:issue.number,state:'closed'});
+            }

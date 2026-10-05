@@ -1,0 +1,43 @@
+/* Continuous scenery, with local translucent surfaces for legibility. */
+body{--veil:#0b1517a6;--surface:#14201fba;--surface-soft:#14201f75;--scene-ink:#eee9db;--scene-muted:#c4cabc}
+html[data-theme=light] body{--veil:#c4cbb53b;--surface:#e8e9dfcf;--surface-soft:#e8e9dfa8}
+.collection-page{isolation:isolate;background:#111c1b;min-height:100svh}
+.collection-page:before{content:'';position:fixed;inset:0;z-index:-2;pointer-events:none;background:linear-gradient(180deg,#0b12132b,#0b161866),url('./forge-v1.png') center/cover no-repeat}
+.collection-page.favorites-view:before{background-image:linear-gradient(180deg,#0b161835,#0b161866),url('./valley-v3.png')}
+.collection-page .index-atmosphere{display:none}
+.collection-page .header{background:var(--surface-soft);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.collection-page .forge-gallery{background:none;isolation:auto}
+.collection-page .forge-gallery:after{background:linear-gradient(90deg,#071013a6,transparent 75%);z-index:-1}
+.collection-page .forge-light{z-index:-1}
+.collection-page .collection-prologue{color:var(--scene-ink);text-shadow:0 1px 10px #08110d}
+.collection-page .collection{background:linear-gradient(180deg,transparent,var(--veil) 160px);padding-bottom:15px}
+.collection-page .section-heading{padding:22px 24px;margin:0 0 20px;background:var(--surface-soft);backdrop-filter:blur(10px);border:1px solid var(--line)}
+.collection-page .collection-tools{padding:0 20px;background:var(--surface);backdrop-filter:blur(12px)}
+.collection-page .collection-meta{padding:17px 20px;margin-bottom:18px;background:var(--surface-soft);backdrop-filter:blur(12px)}
+.collection-page .collection-meta select{background:transparent}
+.collection-page option{background:var(--panel);color:var(--text)}
+.collection-page .card{background:var(--surface);backdrop-filter:blur(10px);border:1px solid var(--line)}
+.collection-page .card-info{padding:17px 18px 19px;border-bottom:0}
+.collection-page .cover-button{border:0;background:transparent}
+.collection-page .cover-art,.collection-page .card:nth-child(3n) .cover-art{background:linear-gradient(135deg,#16313290,#14232050);color:#e0cba0}
+.collection-page .empty{background:var(--surface);backdrop-filter:blur(12px)}
+.collection-page .collection-end{color:var(--scene-ink);text-shadow:0 1px 8px #07110e}
+.collection-page #siteFooter{margin:0;padding:27px 5.2% 35px;background:var(--surface-soft);backdrop-filter:blur(12px)}
+.favorites-view .collection-prologue{margin-top:clamp(75px,12vh,145px)}
+.favorites-view .collection-prologue p{font-size:17px;letter-spacing:5px}
+.favorites-view .collection{min-height:calc(100svh - 360px)}
+/* Extend the entrance's existing artwork below the fold, without changing its hero. */
+.home-page{isolation:isolate;background:#11221c}
+.home-page:before{content:'';position:fixed;inset:0;z-index:-2;background:linear-gradient(#10241bbb,#10241bbb),url('./realm-ink-v3.png') center bottom/cover no-repeat;pointer-events:none}
+.home-page .home-portals{background:var(--surface-soft);backdrop-filter:blur(12px);border-top:1px solid var(--line)}
+.home-page #siteFooter{margin:0;padding:27px 5.2% 35px;background:var(--surface-soft);backdrop-filter:blur(12px)}
+dialog{background:var(--surface);backdrop-filter:blur(22px)}
+.detail-dialog::backdrop{background:#030c0ba8;backdrop-filter:blur(8px)}
+@media(max-width:800px){.collection-page .header nav{background:var(--surface);left:0;right:0;padding:0 5%;backdrop-filter:blur(14px)}.collection-page .collection-tools{padding:0 14px}.collection-page .section-heading{padding:18px 14px}.collection-page .collection-meta{padding:14px 10px}.favorites-view .collection-prologue{margin-top:115px}.collection-page:before{background-position:60% center}.collection-page.favorites-view:before{background-position:48% center}.collection-page .forge-copy{max-width:88%}}
+
+/* Feather large surfaces into scenery; keep stronger tint only beneath small text. */
+.collection-page .section-heading{border:0;background:linear-gradient(90deg,var(--surface-soft),#14201f28);backdrop-filter:blur(4px)}
+.collection-page .empty{background:linear-gradient(90deg,transparent,var(--surface-soft) 25%,var(--surface-soft) 75%,transparent);backdrop-filter:blur(3px)}
+.collection-page .collection-tools,.collection-page .collection-meta{backdrop-filter:blur(5px)}
+.collection-page .card{backdrop-filter:blur(5px)}
+

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101e1c"><meta name="description" content="Sovue 山海藏馆，收藏图像、灵感与世界的片刻。"><title>万象馆藏 · SOVUE VAULT</title><link rel="stylesheet" href="./assets/style.css"><link rel="stylesheet" href="./assets/pages.css"><link rel="stylesheet" href="./assets/immersion.css"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23121f1d'/%3E%3Cpath d='M5 29L14 10L20 23L27 7L36 29Z' fill='none' stroke='%23d4b77c' stroke-width='2'/%3E%3C/svg%3E"></head>
+<body class="collection-page">
+<a class="skip" href="#collection">跳至馆藏</a>
+<div class="index-atmosphere" aria-hidden="true"><i></i><i></i><i></i></div>
+<header id="siteHeader" class="header"></header>
+<main><section class="forge-gallery" aria-labelledby="forgeTitle"><div class="forge-light" aria-hidden="true"></div><div class="forge-copy"><p class="eyebrow">CHAMBER 01 / THE PRIMORDIAL FORGE</p><h1 id="forgeTitle">赤金铸藏</h1><p>以火铭刻万象，以山海收纳热爱。</p><a href="#collection">循光阅藏 <span>↓</span></a></div><span class="forge-mark" aria-hidden="true">青铜 · 神兽 · 不熄之火</span></section><div class="collection-prologue"><a href="./index.html">山海藏馆</a><span> / </span><span>万象索引</span><p>循迹而来，静观所藏。</p></div>
+ <section id="collection" class="collection" aria-labelledby="collectionTitle">
+  <div class="section-heading"><div><p class="eyebrow">THE COLLECTION</p><h2 id="collectionTitle">万象馆藏<span id="totalCount">—</span></h2></div><p>所见皆可藏，所爱皆有归处。</p><button id="exportBtn" class="text-btn">导出馆藏 ↗</button></div>
+  <div class="collection-tools"><div id="filters" class="filters" role="group" aria-label="藏品分类"></div><label class="search"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="寻一件藏品…" aria-label="搜索藏品"><kbd>/</kbd></label></div>
+  <div class="collection-meta"><p id="resultCount" role="status">正在开启藏馆…</p><button id="favoritesFilter" aria-pressed="false">◇ 只看珍藏</button><label>排序 <select id="sortSelect" aria-label="排序"><option value="new">最近收录</option><option value="old">最早收录</option><option value="title">名称顺序</option></select></label></div>
+  <div id="grid" class="grid"></div><div id="empty" class="empty" hidden><span>◇</span><h3>此处静候新的发现</h3><p>试试其他关键词，或为藏馆收录第一件珍藏。</p><button id="clearBtn">查看全部馆藏</button></div>
+  <p id="loadError" class="error" hidden>馆藏暂时未能加载，请刷新重试。本地收录仍可使用。</p>
+  <div class="collection-end"><span></span><i>◇</i><p>万物有灵，收藏有心。</p><span></span></div>
+ </section>
+</main>
+<footer id="siteFooter"></footer><div id="sharedDialogs"></div>
+<dialog id="detailDialog" class="detail-dialog" aria-labelledby="detailTitle"><button class="close" data-close aria-label="关闭详情">×</button><div id="detailContent"></div></dialog>
+<dialog id="localDialog" class="form-dialog"><button class="close" data-close aria-label="关闭收录窗口">×</button><p class="eyebrow">A NEW DISCOVERY</p><h2>为热爱，留一席之地。</h2><p class="dialog-intro">临时收录仅保存在当前浏览器。正式收录请使用右上角的 GitHub Issue 入口。</p><form id="addForm"><label>藏品名称<input name="title" required maxlength="160" placeholder="为这份发现取个名字"></label><label>原始链接<input name="url" type="url" required placeholder="https://"></label><div class="form-row"><label>收藏类别<select name="category"><option value="wallpaper">壁纸影像</option><option value="cos">角色映像 / COS</option><option value="bilibili">视频映记</option><option value="xiaohongshu">灵感笔记</option><option value="website">网络秘径</option><option value="other">其他珍藏</option></select></label><label>标签<input name="tags" placeholder="用逗号分隔"></label></div><label>封面图片链接（可选）<input name="image" type="url" placeholder="https://…/image.jpg"></label><label>收藏札记<textarea name="note" rows="3" placeholder="是什么让你想留住它？"></textarea></label><p id="formError" class="error" role="alert"></p><div class="form-actions"><a id="issueLink" target="_blank" rel="noopener noreferrer">通过 GitHub 收录 ↗</a><button class="primary" type="submit">收入藏馆 ＋</button></div></form></dialog>
+
+<div id="toast" class="toast" role="status"></div><script src="./config.js"></script><script type="module" src="./assets/collection.js"></script></body></html>

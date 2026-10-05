@@ -1,0 +1,32 @@
+[
+  {
+    "id": "20260905-github-pages",
+    "title": "免费部署一个静态网站：GitHub Pages",
+    "category": "bilibili",
+    "url": "https://www.bilibili.com/video/BV1D21uYaEeR/",
+    "image": "",
+    "note": "关于 GitHub Pages 免费部署的教程，适合作为这套个人网页的部署参考。",
+    "tags": ["GitHub", "Pages", "部署"],
+    "added": "2026-09-05"
+  },
+  {
+    "id": "20260905-gmeek",
+    "title": "Gmeek：用 GitHub Issues 写博客",
+    "category": "bilibili",
+    "url": "https://www.bilibili.com/video/BV1GM4m1m7ZD/",
+    "image": "",
+    "note": "把 Issue 当作写作入口，Actions 自动生成博客。",
+    "tags": ["Gmeek", "Blog", "GitHub Issues"],
+    "added": "2026-09-05"
+  },
+  {
+    "id": "20260905-wallpaper-demo",
+    "title": "壁纸示例 · 替换成你的图床 URL",
+    "category": "wallpaper",
+    "url": "https://images.unsplash.com/",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+    "note": "图片不必上传 GitHub；只存外部图床 URL。",
+    "tags": ["Wallpaper", "Demo"],
+    "added": "2026-09-05"
+  }
+]
